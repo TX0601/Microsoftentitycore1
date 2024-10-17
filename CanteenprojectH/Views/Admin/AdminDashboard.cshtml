@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Admin Dashboard";
+}
+
+<h2>Admin Dashboard</h2>
+
+
+<h3>Products</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock Level</th>
+            <th>Category</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.ProductId</td>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price</td>
+                <td>@product.StockLevel</td>
+                <td>@product.Category</td>
+            </tr>
+        }
+    </tbody>
+</table>

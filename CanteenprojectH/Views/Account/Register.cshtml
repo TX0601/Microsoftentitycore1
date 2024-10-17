@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<form method="post" action="/Account/Register">
+    <div class="form-group">
+        <label>Username</label>
+        <input type="text" name="UserName" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" name="Email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" name="PasswordHash" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Role</label>
+        <select name="Role" class="form-control" required>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

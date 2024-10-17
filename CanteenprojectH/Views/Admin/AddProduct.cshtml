@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Add Product";
+}
+
+<h2>Add New Product</h2>
+
+<form method="post" action="/Admin/AddProduct">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <input type="text" name="Description" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" step="0.01" name="Price" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Stock Level</label>
+        <input type="number" name="StockLevel" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Category</label>
+        <input type="text" name="Category" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Add Product</button>
+</form>

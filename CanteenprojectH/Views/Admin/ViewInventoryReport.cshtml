@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Inventory Report";
+}
+
+<h2>Inventory Report</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Inventory ID</th>
+            <th>Product</th>
+            <th>Stock In</th>
+            <th>Stock Out</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var inventory in Model)
+        {
+            <tr>
+                <td>@inventory.InventoryId</td>
+                <td>@inventory.ProductId</td>
+                <td>@inventory.StockIn</td>
+                <td>@inventory.StockOut</td>
+                <td>@inventory.StockDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

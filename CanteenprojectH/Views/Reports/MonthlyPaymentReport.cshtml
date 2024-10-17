@@ -1,0 +1,53 @@
+﻿@using System.Globalization
+@model IEnumerable<PaymentReport>
+
+<h2>Monthly Payment Report</h2>
+
+<!-- Form for Month and Year input -->
+<form method="get" action="@Url.Action("MonthlyPaymentReport", "Reports")">
+    <div class="form-group">
+        <label for="month">Month:</label>
+        <select id="month" name="month" class="form-control">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" class="form-control" min="2000" max="2100" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Generate Report</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Order ID</th>
+                <th>Payment Type</th>
+                <th>Amount</th>
+                <th>Payment Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in Model)
+            {
+                <tr>
+                    <td>@payment.PaymentId</td>
+                    <td>@payment.OrderId</td>
+                    <td>@payment.PaymentType</td>
+                    <td>@payment.Amount.ToString("C")</td>
+                    <td>@payment.PaymentDate.ToString("d")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No payment records found for the selected period.</p>
+}

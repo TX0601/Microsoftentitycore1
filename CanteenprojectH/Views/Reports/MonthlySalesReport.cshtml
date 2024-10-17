@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+@model IEnumerable<SalesReport>
+
+<h2>Monthly Sales Report</h2>
+
+<form method="post" asp-action="MonthlySalesReport">
+    <div>
+        <label for="month">Month:</label>
+        <select id="month" name="month">
+            @for (int i = 1; i <= 12; i++)
+            {
+                <option value="@i">@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i)</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="year">Year:</label>
+        <input type="number" id="year" name="year" value="@DateTime.Now.Year" min="2000" max="2100" required />
+    </div>
+    <button type="submit">Generate Report</button>
+</form>
+
+@if (Model != null && Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity Sold</th>
+                <th>Total Amount</th>
+                <th>Payment Type</th>
+                <th>Sale Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sale in Model)
+            {
+                <tr>
+                    <td>@sale.ProductName</td>
+                    <td>@sale.Quantity</td>
+                    <td>@sale.TotalAmount.ToString("C")</td>
+                    <td>@sale.PaymentType</td>
+                    <td>@sale.SaleDate.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No sales found for the selected month and year.</p>
+}

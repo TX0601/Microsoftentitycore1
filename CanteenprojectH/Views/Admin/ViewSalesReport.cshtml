@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Sales Report";
+}
+
+<h2>Sales Report</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Sale ID</th>
+            <th>User</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Total Amount</th>
+            <th>Payment Type</th>
+            <th>Date of Sale</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@sale.SaleId</td>
+                <td>@sale.UserId</td>
+                <td>@sale.ProductId</td>
+                <td>@sale.Quantity</td>
+                <td>@sale.TotalAmount</td>
+                <td>@sale.PaymentType</td>
+                <td>@sale.SaleDate</td>
+            </tr>
+        }
+    </tbody>
+</table>

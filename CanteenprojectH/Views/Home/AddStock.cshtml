@@ -1,0 +1,53 @@
+﻿@model CanteenprojectH.Models.Inventory
+
+@{
+    ViewData["Title"] = "AddStock";
+}
+
+<h1>AddStock</h1>
+
+<h4>Inventory</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddStock">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InventoryId" class="control-label"></label>
+                <input asp-for="InventoryId" class="form-control" />
+                <span asp-validation-for="InventoryId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input asp-for="ProductId" class="form-control" />
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockIn" class="control-label"></label>
+                <input asp-for="StockIn" class="form-control" />
+                <span asp-validation-for="StockIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockOut" class="control-label"></label>
+                <input asp-for="StockOut" class="form-control" />
+                <span asp-validation-for="StockOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StockDate" class="control-label"></label>
+                <input asp-for="StockDate" class="form-control" />
+                <span asp-validation-for="StockDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CanteenprojectH.Models.Sale>
+
+<h2>Your Cart</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model)
+        {
+            <tr>
+                <td>@(sale.Product != null ? sale.Product.Name : "Product not found")</td>
+                <td>@sale.Quantity</td>
+                <td>@sale.Product?.Price.ToString("C")</td>
+                <td>@(sale.TotalAmount.ToString("C"))</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<tfoot>
+    <tr>
+        <td colspan="3" style="text-align: right;"><strong>Total:</strong></td>
+        <td>@(Model.Sum(x => x.TotalAmount).ToString("C"))</td>
+    </tr>
+</tfoot>
+
+<!-- Payment Form -->
+<h3>Proceed to Payment</h3>
+<form asp-action="ProcessPayment" method="post">
+    <div class="form-group">
+        <label for="paymentType">Payment Type</label>
+        <select id="paymentType" name="paymentType" class="form-control">
+            <option value="Cash">Cash</option>
+            <option value="UPI">UPI</option>
+            <option value="Debit/Credit Card">Debit/Credit Card</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Pay</button>
+</form>
